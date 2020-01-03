@@ -1,6 +1,8 @@
 # UIFramework
 A powerful UI framework for the game Onset (https://playonset.com/).
 
+`The framework is still under development, so functions can be replaced by new ones at any time. You should always consider this when updating to a new version.`
+
 #### Why should I not use the Onset WebUI directly?
 Of course you can also use the WebUI directly and have more possibilities.
 But sometimes with a good UI framework you get awesome results a lot faster and easier, so you have more time to develop the main logic of your extension.
