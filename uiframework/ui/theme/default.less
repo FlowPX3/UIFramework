@@ -1,0 +1,454 @@
+/* Not finished and dirty at the moment */
+/* ToDo: more variables and the same color on all selections */
+
+@default-font: 'Source Sans Pro';
+@dialog-background-color: linear-gradient(to bottom,  rgba(43,53,65,0.95) 0%, rgba(37,46,56,0.95) 100%);
+@dialog-title-background-color: linear-gradient(to bottom,  rgba(254,155,0,0.7) 0%, rgba(254,119,1,0.7) 100%);
+@dialog-title-text-color: #000000;
+
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color:#e0e0e0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px rgba(37,46,56,1);
+    border: solid 5px transparent;
+}
+
+body {
+    user-select: none;
+    cursor: default;
+    overflow: hidden;
+}
+
+/* ToDo: It's a bad idea to make the color or text-shadow here need to change*/
+body, * {
+    font-family: @default-font;
+    font-size: 12pt;
+    color: #fff;
+    text-shadow: 0px 0px 3px #000;
+}
+
+div, p, span, h1, h2, h3, h4 {
+    font-family: @default-font;
+    color: #fff;
+    text-shadow: 0px 0px 3px #000;
+    font-weight: normal;
+}
+
+h4 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14pt;
+
+    span {
+        font-size: 14pt;
+    }
+}
+
+h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16pt;
+    span {
+        font-size: 16pt;
+    }
+}
+
+h2 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 18pt;
+    span {
+        font-size: 18pt;
+    }
+}
+
+h1 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20pt;
+    span {
+        font-size: 20pt;
+    }
+}
+
+
+
+/* dialog style */
+.dialog {
+    position: absolute;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.7);
+    top: 250px;
+    left: 350px;
+    width: 400px;
+    padding: 10px;
+    border-radius: 15px;
+    background: @dialog-background-color;
+    overflow: hidden;
+
+    > .title {
+        position: relative;
+        color: #fff; /*@dialog-title-text-color; */
+        margin: -10px -10px 10px;
+        padding: 10px;
+        cursor: pointer;
+        text-align: center;
+        background: rgba(37,46,56,1);
+
+        .button-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: #9e3640;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 2px;
+            text-shadow: none;
+            line-height: 22px;
+        }
+    }
+
+    > .content {
+        margin: 0px 10px 10px;
+    }
+}
+
+/* button style */
+.button{
+
+
+
+
+    background: #4373d9;
+    padding: 10px;
+    display: inline-block;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+
+    &:focus {
+        background-color:yellow;
+    }
+
+    &:hover {
+        background: rgba(29,105,208,0.6);
+        color: white;
+    }
+}
+
+
+.textfield {
+    background: rgba(255,255,255,1);
+    display: inline-block;
+    color: black;
+    border: 0px solid black;
+    padding: 5px;
+    margin: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+    text-shadow: none;
+
+    border-radius: 10px;
+}
+
+
+::selection {
+    background: rgba(29,105,208,0.8);
+    color: white;
+}
+
+#screen {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+
+
+
+/* progressbar style */
+.progressbar {
+    background: white;
+    height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px;
+    overflow: hidden;
+    position: relative;
+    border: 0px;
+    border-radius: 10px;
+
+    .title {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        color: rgb(43,46,51);
+        text-shadow: 0px 0px 4px #fff;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .progress.blue{
+        overflow: hidden;
+        width: 50%;
+        height: 100%;
+        background: rgba(29,105,208,0.8);
+        border-radius: 10px;
+    }
+
+    .progress.green{
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to bottom, #6cef47 14%,#3fa84a 89%);
+    }
+}
+
+
+/* checkbox style */
+.checkbox {
+    position: relative;
+    color: white;
+    line-height: 20px;
+
+    label {
+        margin: 0px;
+        padding: 0px 0px 0px 30px;
+        display: block;
+        cursor: pointer;
+    }
+
+    input {
+        top: 0;
+        left: 0;
+        z-index: 1;
+        cursor: pointer;
+        opacity: 0;
+        position: absolute;
+    }
+
+    input:checked + .checkbox-helper:before {
+        border-color: #1b2128;
+    }
+
+    .checkbox-helper:before,
+    .checkbox-helper:after {
+        position: absolute;
+        content: "";
+        transition: all 200ms;
+    }
+
+    .checkbox-helper:before {
+        left: 0;
+        background: white;
+        /* border: 2px solid #1b2128; */
+    }
+
+    input {
+        width: 20px;
+        height: 20px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    input:checked + .checkbox-helper:before {
+        background-color: rgba(29,105,208,0.8);
+    }
+
+    input:checked + .checkbox-helper:after {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .checkbox-helper:before {
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        color: #fff;
+    }
+
+    .checkbox-helper:after {
+        content: '\2713';
+        font-size: 13px;
+        left: 3px;
+        top: 0px;
+        color: #fff;
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.ui-image {
+    width: 100%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0px;
+    padding: 0px;
+}
+
+.combobox {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    border: 0px;
+    box-shadow: none;
+
+
+    select {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        box-shadow: none;
+    }
+
+    option {
+        margin: 0px;
+        padding: 5px;
+        text-shadow: none;
+        color: #303030;
+    }
+}
+
+
+
+
+.dock {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 5px black;
+    height: 50px;
+    width: 500px;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -250px;
+    float: left;
+}
+
+.field {
+    margin-top: 5px;
+    margin-left: 5px;
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: rgba(200,200,200,0.1)
+}
+
+
+
+.listview {
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+:focus { outline: none; }
+
+
+
+table {
+    border: 0px solid red;
+    width: 100%;
+}
+
+table tr td {
+    padding: 5px;
+}
+
+.ui-accordion-header {
+    background: #1b2128;
+    border-radius: 0px;
+    border: 0px;
+    color: white;
+    border-radius: 10px;
+}
+
+.ui-accordion-content {
+    border-radius: 0px;
+    background: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.ui-state-active {
+    background: rgb(124,133,142) !important;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+
+
+#notifications {
+    position: absolute;
+    width: 300px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#notifications li {
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+#notifications li .title {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+#notifications li .title .close-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+
+#notifications li .title .close-button:hover {
+    color: #cb1f1f;
+}
+
+
+#notifications li:hover {
+    background: rgba(0,0,0,1);
+    color: white;
+    padding: 10px;
+
+    margin: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}

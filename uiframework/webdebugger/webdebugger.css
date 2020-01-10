@@ -1,0 +1,144 @@
+.web-debugger {
+    position: absolute;
+    bottom: 0px;
+    height: 340px;
+    left: 0px;
+    right: 0px;
+    background: #efefef;
+    z-index: 1;
+    overflow: auto;
+    font-family: Arial;
+}
+
+.web-debugger .web-debugger-input {
+    background: white;
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+.web-debugger .web-debugger-toolbar {
+    position: absolute;
+    top: 0px;
+    height: 38px;
+    left: 0px;
+    right: 0px;
+    background: #efefef;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #808080;
+    float: left;
+}
+
+.web-debugger .web-debugger-button {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    margin: 0px;
+    padding: 2px 15px;
+    font-size: 10pt;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+}
+
+.web-debugger .web-debugger-button:hover {
+    border-bottom: 2px solid blue;
+    cursor: pointer;
+}
+
+.web-debugger .web-debugger-button.active {
+    border-bottom: 2px solid blue;
+    background: white;
+}
+
+.web-debugger .web-debugger-console {
+    position: absolute;
+    bottom: 0px;
+    height: 300px;
+    left: 0px;
+    right: 0px;
+    background: white;
+    z-index: 1;
+    overflow: auto;
+    user-select: text !important;
+}
+
+.web-debugger .web-debugger-elements {
+    position: absolute;
+    bottom: 0px;
+    height: 300px;
+    left: 0px;
+    right: 400px;
+    background: white;
+    z-index: 1;
+    overflow: auto;
+    font-family: "Courier New", Courier, monospace;
+    user-select: text !important;
+}
+
+.web-debugger .web-debugger-style {
+    position: absolute;
+    bottom: 0px;
+    height: 300px;
+    width: 395px;
+    right: 0px;
+    background: white;
+    z-index: 1;
+    overflow: auto;
+    font-family: "Courier New", Courier, monospace;
+    user-select: text !important;
+}
+
+.web-debugger .web-debugger-elements ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.web-debugger .web-debugger-elements ul li{
+    margin: 0px;
+    padding: 0px;
+    margin-left: 30px;
+}
+
+.web-debugger .web-debugger-log {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #efefef;
+    padding: 5px;
+}
+
+.web-debugger .web-debugger-info {
+    width: 100%;
+    background: rgba(14,34,71,0.2);
+    color: rgb(4,24,61);
+    border-bottom: 1px solid #efefef;
+    padding: 5px;
+}
+
+.web-debugger .web-debugger-warn {
+    width: 100%;
+    background: rgba(235,146,35,0.2);
+    color: rgb(225,136,25);
+    border-bottom: 1px solid #efefef;
+    padding: 5px;
+}
+
+.web-debugger .web-debugger-error {
+    width: 100%;
+    background: rgba(138,8,9,0.2);
+    color: rgb(128,0,0);
+    border-bottom: 1px solid #efefef;
+    padding: 5px;
+}
+
+.debugger-hightlight-tag {
+    color: #b266ad;
+}
+
+.debugger-hightlight-key {
+    color: #b77b4a;
+}
+
+.debugger-hightlight-value {
+    color: #2d2dff;
+}

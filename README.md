@@ -22,4 +22,4 @@ There are many people who have good ideas for Onset, but need help with a user i
 Together we can achieve more! And we all want more good extensions for Onset. 😉
 
 ## Example
-Coming soon
+![image](/screenshots/screenshot_01.png)
