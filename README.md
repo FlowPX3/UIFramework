@@ -1,4 +1,11 @@
-# UIFramework
+### Choose a language
+
+* [English](#english)
+* [Russian](#russian) (Thanks to [LocCode](https://github.com/LocCode))
+
+# English
+
+## UIFramework
 A powerful UI framework for the game Onset (https://playonset.com/).
 
 `The framework is still under development, so functions can be replaced by new ones at any time. You should always consider this when updating to a new version.`
@@ -24,9 +31,9 @@ Together we can achieve more! And we all want more good extensions for Onset. �
 ## Example
 ![image](/screenshots/screenshot_01.png)
 
+# Russian
 
-
-# UIFramework
+## UIFramework
 Мощный UI фреймворк для игры Onset (https://playonset.com/).
 
 `Данный фреймворк находится в разработке, поэтому функции могуть быть заменены новыми в любой момент. Вы должны это учитывать при установке более новой версии.`
