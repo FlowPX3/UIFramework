@@ -6,12 +6,11 @@ end
 
 function CreateOptionListDialog()
 
-
     local ImageStyle = UICSS()
-    ImageStyle.left = "0px"
-    ImageStyle.right = "0px"
-    ImageStyle.top = "0px"
-    ImageStyle.bottom = "0px"
+    ImageStyle['left'] = "0px"
+    ImageStyle['right'] = "0px"
+    ImageStyle['top'] = "0px"
+    ImageStyle['bottom'] = "0px"
     ImageStyle['background-position'] = "center center"
 
     --Create a image direct on the screen and not in a dialog

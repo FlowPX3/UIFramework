@@ -3,7 +3,7 @@ function UITextField()
 
     self.options.multiline = false
     self.options.template = [[
-        <input id="<%- id %>" class="ui-framework-parent textfield" spellcheck="false" value="<%- value %>" placeholder="<%- placeholder %>">
+        <input id="<%- id %>" class="ui-framework-parent textfield" spellcheck="false" value="<%- value %>" placeholder="<%- placeholder %>" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
     ]]
 
     function self.setPlaceholder(placeholder)

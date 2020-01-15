@@ -7,7 +7,7 @@ function UIProgressBar()
         value = 0,
         max = 100,
         template = [[
-            <div id="<%- id %>" class="ui-framework-parent progressbar">
+            <div id="<%- id %>" class="ui-framework-parent progressbar" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
                 <div class="progress blue" style="width: <%- value %>%;"><div class="title"><%- title %></div></div>
             </div>
         ]]

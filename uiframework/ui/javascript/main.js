@@ -1,8 +1,22 @@
-function setVisibility(objectId, visibility) {
+let zIndex = 0;
+
+function setVisibility(object, visibility) {
     if (visibility) {
-        $("#" + objectId).show();
+        let obj = $("#" + object.id);
+        obj.show();
+
+        //set the newest dialog to front
+        if(object.type == "UIDialog") {
+            zIndex++;
+            obj.css({
+                'z-index': zIndex
+            });
+
+            $('.dialog').removeClass('active');
+            obj.addClass('active');
+        }
     } else {
-        $("#" + objectId).hide();
+        $("#" + object.id).hide();
     }
 }
 
@@ -17,53 +31,27 @@ function setToScreenCenter(ObjectId) {
     dialog.css ("left", ($('#screen').width() - dialog.width()) / 2 + "px")
 }
 
+
 function updateObject(object) {
-    let id = $("#" + object.id).parent().closest('[children-container-for-id]').attr('children-container-for-id');
     $('#' + object.id).remove();
 
-    
-    /*
-    if(object.type == "UIContainer") {
-        console.log("o id: " + object.id);
-        console.log("id: " + id);
-        console.log("updateObject: " + JSON.stringify(object));
-    }
-    */
+    //console.log(JSON.stringify(object));
 
-    
-
-    let parentObject = $('#screen');
-    if (id != null) {
-        parentObject = $("[children-container-for-id='" + id + "']")
-    }
+    let parentObject = $("[children-container-for-id='" + object.parent + "']")
 
     if (typeof object.template != "undefined") {
-        let dialog = ejs.render(object.template, object);
-        parentObject.append(dialog);
-    }
+        let obj = $(ejs.render(object.template, object));
+        parentObject.append(obj);
 
-    $(".dialog").draggable({handle: "> .title"});
-    $(".drag").sortable({
-        connectWith: ".drop"
-    }).disableSelection();
-    $(".accordion").accordion();
-}
-
-function appendChild(parent, object) {
-    let parentObject = $('#screen');
-    if (parent != null) {
-        parentObject = $("[children-container-for-id='" + parent + "']")
-    }
-
-    /*
-    if(object.type == "UIContainer") {
-        console.log("appendChild: " + JSON.stringify(parent) + " " + JSON.stringify(object));
-    }
-    */
-
-    if (typeof object.template != "undefined") {
-        let dialog = ejs.render(object.template, object);
-        parentObject.append(dialog);
+        //set the newest dialog to front
+        if(object.type == "UIDialog") {
+            zIndex++;
+            obj.css({
+                'z-index': zIndex
+            });
+            $('.dialog').removeClass('active');
+            obj.addClass('active');
+        }
     }
 
     $(".dialog").draggable({handle: "> .title"});
@@ -75,11 +63,16 @@ function appendChild(parent, object) {
 
 
 $(function () {
-    let zIndex = 0;
+    //console.log("load")
+    
     ue.game.callevent("OnUIFrameworkReady", "[]");
 
     $(document).on('keyup', function (event) {
         ue.game.callevent("OnUIFrameworkKeyPress", JSON.stringify([event.key.toUpperCase()]));
+    });
+
+    $('body').on("sortstop", function( event, ui ) {
+        console.log(JSON.stringify(ui))
     });
 
     $('body').on("mousedown", function (e) {
@@ -87,8 +80,11 @@ $(function () {
         $(e.target).closest('.dialog').css({
             'z-index': zIndex
         });
-    });
 
+        $('.dialog').removeClass('active');
+        $(e.target).closest('.dialog').addClass('active');
+
+    });
 
     $('body').on("click", ".button-close", function(e){
         let target = $(e.target);

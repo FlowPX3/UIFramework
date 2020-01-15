@@ -4,13 +4,20 @@ function UIElement()
         theme = "default",
         type = "UIElement",
         id = UIFramework.getNewID(),
+        parent = nil,
         title = "",
         content = nil,
         placeholder = "",
         value = "",
         visible = true,
-        css = nil
+        css = nil,
+        template = [[
+            <div id="<%- id %>" class="ui-framework-parent" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>"></div>
+        ]]
     }
+    self.children = {}
+
+
 
     -- helper
     function booleanToString(bool)
@@ -134,7 +141,7 @@ function UIElement()
 
     function self.setVisibility(visible)
         self.options.visible = visible
-        UIFramework.execute("setVisibility("..self.options.id..", ".. booleanToString(self.options.visible) .. ");")
+        UIFramework.execute("setVisibility("..self.getObjectAsJSON()..", ".. booleanToString(self.options.visible) .. ");")
     end
 
     function self.isVisible()
@@ -151,9 +158,22 @@ function UIElement()
         return json_encode(self.options)
     end
 
-    --
     function self.appendTo(parent)
         parent.appendChild(self)
+        return self
+    end
+
+    function self.update()
+        UIFramework.execute("updateObject("..self.getObjectAsJSON()..");")
+        for _, child in pairs(self.children) do
+            child.update()
+        end
+    end
+
+    function self.appendChild(child)
+        table.insert(self.children, child)
+        child.options.parent = self.options.id
+        self.update()
         return self
     end
 

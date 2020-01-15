@@ -10,7 +10,7 @@ function UIGrid()
         rows = {},
         header = {},
         template = [[
-            <table id="<%- id %>" class="ui-framework-parent" border="0" cellspacing="1">
+            <table id="<%- id %>" class="ui-framework-parent" border="0" cellspacing="1" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
                 <thead>
                     <tr>
                         <% header.forEach(function(column){ %>

@@ -15,12 +15,12 @@ function CreateDialogExample()
     desc.appendTo(dialog)
 
     --Create the "destroy" button
-    local okButton = UIButton()
-    okButton.setTitle("Destroy this dialog")
-    okButton.onClick(function(obj)
+    local destroyButton = UIButton()
+    destroyButton.setTitle("Destroy this dialog")
+    destroyButton.onClick(function(obj)
         dialog.destroy()
     end)
-    okButton.appendTo(dialog)
+    destroyButton.appendTo(dialog)
 
     --Create the "center" button
     local centerButton = UIButton()

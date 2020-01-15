@@ -3,11 +3,14 @@ function UIDialog()
 
     self.options.type = "UIDialog"
     self.options.row = {}
+    self.options.canClose = true
     self.options.template = [[
         <div id="<%- id %>" class="ui-framework-parent dialog" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
             <div class="title">
                 <%- title %>
-                <div class="button-close"><i class="fas fa-times"></i></div>
+                <% if (typeof canClose != 'undefined' && canClose) { %>
+                    <div class="button-close"><i class="fas fa-times"></i></div>
+                <% } %>
             </div>
             <div>
                 <table border="0" cellspacing="5">
@@ -24,20 +27,34 @@ function UIDialog()
     self.children = {}
 
 
+    function self.setCanClose(value)
+        self.options.canClose = value
+        self.update()
+    end
+
+
+    function self.update()
+        UIFramework.execute("updateObject("..self.getObjectAsJSON()..");")
+        for _, child in pairs(self.children) do
+            child.update()
+        end
+    end
+
     local counter = 0;
     function self.appendChild(child)
         table.insert(self.options.row, counter)
         table.insert(self.children, child)
 
-        UIFramework.execute("updateObject("..self.getObjectAsJSON()..");")
-
-        local cnt = 0
+        local cnt = -1
         for key,value in pairs(self.children) do
-            UIFramework.execute("appendChild('" .. self.options.id .. "-".. cnt .."', "..value.getObjectAsJSON()..");")
             cnt = cnt + 1
         end
 
-        counter = counter + 1  
+        counter = counter + 1
+
+        child.options.parent = self.options.id .. "-".. cnt
+        self.update()
+        return self
     end
 
     function self.setToScreenCenter()

@@ -1,5 +1,7 @@
 local function UIFrameworkBase()
-    local self = {}
+    local self = {
+        id = "screen"
+    }
 
     local ui = CreateWebUI(0, 0, 0, 0, 0, 32)
     SetWebVisibility(ui, WEB_VISIBLE)
@@ -31,7 +33,8 @@ local function UIFrameworkBase()
 
     function self.appendChild(child)
         table.insert(children, child)
-        self.execute("appendChild(null, "..child.getObjectAsJSON()..");")
+        child.options.parent = "screen"
+        return self
     end
 
     function self.setScale(scale)

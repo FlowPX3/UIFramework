@@ -3,6 +3,22 @@ ExampleBrowserDialog = nil
 
 function CreateOptionListDialog()
 
+    -- set position to right bottom for the help
+    local helpStyle = UICSS()
+    helpStyle['position'] = "absolute"
+    helpStyle['right'] = "20px"
+    helpStyle['bottom'] = "20px"
+
+    --Create a text
+    local help = UIText()
+    help.setContent([[
+        <h1>Info</h1>
+        Press the key 'I' to toggle the example dialog visibility. <br>
+        Press the key 'O' to toggle the debug console visibility.
+    ]])
+    help.setCSS(helpStyle)
+    help.appendTo(UIFramework)
+
     --Set dialog size and position
     local ScreenX, ScreenY = GetScreenSize()
     local dialogPosition = UICSS()
@@ -37,6 +53,9 @@ function CreateOptionListDialog()
     dialogList.appendOption("ScreenEffects");
     dialogList.appendOption("WelcomeDialog");
     dialogList.appendOption("DialogExample");
+    dialogList.appendOption("Container");
+
+    
     dialogList.appendTo(ExampleBrowserDialog)
     dialogList.onChange(function(obj)
         selectedDialogs = obj.getValue()
@@ -49,9 +68,10 @@ function CreateOptionListDialog()
 
 
     --Create the "hide" button
-    local okButton = UIButton()
-    okButton.setTitle("Show dialog")
-    okButton.onClick(function(obj)
+    local hideButton = UIButton()
+    hideButton.setTitle("Show dialog")
+    hideButton.setType("primary")
+    hideButton.onClick(function(obj)
         for _, value in pairs(selectedDialogs) do
             local dialog = GlobalDialogs[value]
             if dialog ~= nil then
@@ -61,12 +81,13 @@ function CreateOptionListDialog()
             end
         end
     end)
-    okButton.appendTo(buttonContainer)
+    hideButton.appendTo(buttonContainer)
 
     --Create the "show" button
-    local okButton = UIButton()
-    okButton.setTitle("Hide dialog")
-    okButton.onClick(function(obj)
+    local showButton = UIButton()
+    showButton.setTitle("Hide dialog")
+    showButton.setType("secondary")
+    showButton.onClick(function(obj)
         for _, value in pairs(selectedDialogs) do
             local dialog = GlobalDialogs[value]
             if dialog ~= nil then
@@ -74,7 +95,7 @@ function CreateOptionListDialog()
             end
         end
     end)
-    okButton.appendTo(buttonContainer)
+    showButton.appendTo(buttonContainer)
 
     
 end
