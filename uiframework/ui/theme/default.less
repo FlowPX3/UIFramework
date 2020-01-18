@@ -6,11 +6,13 @@
 @dialog-title-background-color: linear-gradient(to bottom,  rgba(254,155,0,0.7) 0%, rgba(254,119,1,0.7) 100%);
 @dialog-title-text-color: #000000;
 
+body {
+    overflow: hidden;
+}
 
 body, * {
     user-select: none;
     cursor: default;
-    overflow: hidden;
 }
 
 /* ToDo: It's a bad idea to make the color or text-shadow here need to change*/
@@ -20,6 +22,8 @@ body {
 }
 */
 
+
+
 #screen {
     position: absolute;
     top: 0px;
@@ -27,14 +31,6 @@ body {
     right: 0px;
     bottom: 0px;
     overflow: hidden;
-    
-
-    div, span, p, select, option {
-        font-family: @default-font;
-        font-size: 12pt;
-        color: #fff;
-        text-shadow: 0px 0px 3px #000;
-    }
 
     ::-webkit-scrollbar {
         width: 15px;
@@ -51,6 +47,16 @@ body {
         box-shadow: inset 0 0 10px 10px rgba(37,46,56,1);
         border: solid 5px transparent;
     }
+    
+
+    div, span, p, select, option {
+        font-family: @default-font;
+        font-size: 12pt;
+        color: #fff;
+        text-shadow: 0px 0px 3px #000;
+    }
+
+
 
 
     div, p, span, h1, h2, h3, h4 {
@@ -136,7 +142,7 @@ body {
                 height: 22px;
                 border-radius: 2px;
                 text-shadow: none;
-                line-height: 28px;
+                line-height: 22px;
                 cursor: pointer;
 
                 * {
@@ -219,7 +225,7 @@ body {
 
 
     ::selection {
-        background: rgba(208, 29, 29, 0.8);
+        background: #1e90ff;
         color: white;
     }
 

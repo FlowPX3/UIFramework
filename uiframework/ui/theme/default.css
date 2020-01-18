@@ -1,10 +1,12 @@
 /* Not finished and dirty at the moment */
 /* ToDo: more variables and the same color on all selections */
+body {
+  overflow: hidden;
+}
 body,
 * {
   user-select: none;
   cursor: default;
-  overflow: hidden;
 }
 /* ToDo: It's a bad idea to make the color or text-shadow here need to change*/
 /*
@@ -24,16 +26,6 @@ body {
   /* progressbar style */
   /* checkbox style */
 }
-#screen div,
-#screen span,
-#screen p,
-#screen select,
-#screen option {
-  font-family: 'Source Sans Pro';
-  font-size: 12pt;
-  color: #fff;
-  text-shadow: 0px 0px 3px #000;
-}
 #screen ::-webkit-scrollbar {
   width: 15px;
 }
@@ -48,6 +40,16 @@ body {
 #screen ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 10px 10px #252e38;
   border: solid 5px transparent;
+}
+#screen div,
+#screen span,
+#screen p,
+#screen select,
+#screen option {
+  font-family: 'Source Sans Pro';
+  font-size: 12pt;
+  color: #fff;
+  text-shadow: 0px 0px 3px #000;
 }
 #screen div,
 #screen p,
@@ -131,7 +133,7 @@ body {
   height: 22px;
   border-radius: 2px;
   text-shadow: none;
-  line-height: 28px;
+  line-height: 22px;
   cursor: pointer;
 }
 #screen .dialog > .title .button-close * {
@@ -194,7 +196,7 @@ body {
   box-shadow: inset 0px 0px 5px #4375b7;
 }
 #screen ::selection {
-  background: rgba(208, 29, 29, 0.8);
+  background: #1e90ff;
   color: white;
 }
 #screen .progressbar {
