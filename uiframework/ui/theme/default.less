@@ -23,6 +23,21 @@ body {
 */
 
 
+/* color picker container */
+.color-picker-container {
+    border: 5px solid rgba(37,46,56,1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+}
+
+.color-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    box-shadow: none;
+}
+
 
 #screen {
     position: absolute;
@@ -104,6 +119,37 @@ body {
     }
 
     :focus { outline: none; }
+
+
+    /* color picker */
+    .ui-color-picker {
+        position: relative;
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border-radius: 5px;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: 5px solid rgba(37,46,56,1);
+            border-radius: 16px;
+        }
+
+        .title {
+            position: relative;
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+            top: -10px;
+        }
+    }
+
+
 
 
     /* dialog style */

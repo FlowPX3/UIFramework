@@ -2,6 +2,25 @@ GlobalDialogs = {}
 ExampleBrowserDialog = nil
 
 function CreateOptionListDialog()
+    -- Disable chat etc.
+    ShowChat(false)
+    ShowHealthHUD(false)
+    ShowWeaponHUD(false)
+    
+    -- UIFramework Logo Style
+    local ImageStyle = UICSS()
+    ImageStyle['left'] = "10px"
+    ImageStyle['width'] = "400px"
+    ImageStyle['top'] = "10px"
+    ImageStyle['height'] = "100px"
+
+    -- UIFrameworkLogo
+    local uiFrameworkLogo = UIImage()
+    uiFrameworkLogo.mode("contain")
+    uiFrameworkLogo.setCSS(ImageStyle)
+    --uiFrameworkLogo.appendTo(UIFramework)
+    uiFrameworkLogo.setImage("../../examples/resources/UIFrameworkLogo.png")
+
 
     -- set position to right bottom for the help
     local helpStyle = UICSS()
@@ -19,18 +38,39 @@ function CreateOptionListDialog()
     help.setCSS(helpStyle)
     help.appendTo(UIFramework)
 
+
+
+
     --Set dialog size and position
+    --[[
     local ScreenX, ScreenY = GetScreenSize()
     local dialogPosition = UICSS()
     dialogPosition.top = "250px"
     dialogPosition.left = math.floor((ScreenX - 600) / 2) .. "px !important"
     dialogPosition.width = "600px"
+    ]]--
+
+    -- dialog on the left side
+    local ScreenX, ScreenY = GetScreenSize()
+    local dialogPosition = UICSS()
+    dialogPosition['top'] = "0px"
+    dialogPosition['width'] = "350px"
+    dialogPosition['bottom'] = "0px"
+    dialogPosition['left'] = (ScreenX - 370).."px"
+    dialogPosition['border-radius'] = "0px"
+
+    local titleStyle = UICSS()
+    titleStyle['position'] = "relative"
+    titleStyle['border-radius'] = "0px"
 
     --Create a dialog
-    ExampleBrowserDialog = UIDialog()
+    local ExampleBrowserDialog = UIDialog()
     ExampleBrowserDialog.setTitle("Example Browser")
     ExampleBrowserDialog.setCSS(dialogPosition)
+    ExampleBrowserDialog.setTitleCSS(titleStyle)
     ExampleBrowserDialog.appendTo(UIFramework)
+    ExampleBrowserDialog.setCanClose(false)
+    ExampleBrowserDialog.setMovable(false)
     ExampleBrowserDialog.onClickClose(function(obj)
         obj.hide()
     end)
@@ -54,6 +94,7 @@ function CreateOptionListDialog()
     dialogList.appendOption("WelcomeDialog");
     dialogList.appendOption("DialogExample");
     dialogList.appendOption("Container");
+    dialogList.appendOption("ColorPicker");
 
     
     dialogList.appendTo(ExampleBrowserDialog)

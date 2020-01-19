@@ -21,6 +21,7 @@
     "uiframework/client/UICheckBox.lua",
     "uiframework/client/UIImage.lua",
     "uiframework/client/UIOptionList.lua",
+    "uiframework/client/UIColorPicker.lua",
     "uiframework/client/UICSS.lua",
     "examples/ExampleBrowser.lua",
     "examples/example.lua",
@@ -28,7 +29,8 @@
     "examples/OptionList.lua",
     "examples/example3.lua",
     "examples/ScreenEffects.lua",
-    "examples/DialogExample.lua"
+    "examples/DialogExample.lua",
+    "examples/ColorPicker.lua"
   ],
   "files": [
     "uiframework/webdebugger/webdebugger.js",
@@ -44,6 +46,7 @@
     "examples/resources/blood_1.png",
     "examples/resources/blood_2.png",
     "examples/resources/blood_3.png",
+    "examples/resources/UIFrameworkLogo.png",
 
     "uiframework/ui/libs/fontawesome/css/fontawesome.css",
     "uiframework/ui/libs/fontawesome/css/brands.css",
@@ -58,6 +61,10 @@
     "uiframework/ui/libs/source-sans-pro/TTF/SourceSansPro-Regular.ttf",
     "uiframework/ui/libs/source-sans-pro/TTF/SourceSansPro-Black.ttf",
     "uiframework/ui/libs/source-sans-pro/TTF/SourceSansPro-Bold.ttf",
-    "uiframework/ui/libs/source-sans-pro/source-sans-pro.css"
+    "uiframework/ui/libs/source-sans-pro/source-sans-pro.css",
+
+    "uiframework/ui/libs/color-picker/color-picker.min.css",
+    "uiframework/ui/libs/color-picker/color-picker.min.js"
+
   ]
 }

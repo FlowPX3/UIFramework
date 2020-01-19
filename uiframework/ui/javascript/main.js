@@ -32,6 +32,42 @@ function setToScreenCenter(ObjectId) {
 }
 
 
+function refreshEventsAndFunctions() {
+    
+    let colorPickers = $('.ui-color-picker input');
+    for(var i = 0; i < colorPickers.length; i++) {
+
+        if(typeof $(colorPickers[i]).data('loaded') == "undefined") {
+            $(colorPickers[i]).data('loaded', true)
+
+            let colorPicker = colorPickers[i];
+            picker = new CP(colorPicker);
+
+            // prevent showing native color picker panel
+            colorPicker.onclick = function(e) {
+                e.preventDefault();
+            };
+
+            picker.on("change", function(color) {
+                this.source.value = '#' + color;
+                let target = $(this.source);
+                ue.game.callevent("OnUIFrameworkEvent", JSON.stringify([
+                    target.closest('.ui-framework-parent').attr('id'),
+                    "change",
+                    "string",
+                    '#' + color
+                ]));
+            });
+        }
+    }
+
+    $(".dialog").draggable({handle: "> .title"});
+    $(".drag").sortable({
+        connectWith: ".drop"
+    }).disableSelection();
+    $(".accordion").accordion();
+}
+
 function updateObject(object) {
     $('#' + object.id).remove();
 
@@ -54,11 +90,7 @@ function updateObject(object) {
         }
     }
 
-    $(".dialog").draggable({handle: "> .title"});
-    $(".drag").sortable({
-        connectWith: ".drop"
-    }).disableSelection();
-    $(".accordion").accordion();
+    refreshEventsAndFunctions();
 }
 
 

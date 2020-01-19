@@ -20,5 +20,10 @@ function UICSS()
         return string
     end
 
+    function self.set(key, value)
+        self[key] = value
+        return self
+    end
+
     return self
 end

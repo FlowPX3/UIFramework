@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Color Picker</title>
+    <link href="color-picker.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <p>Update color picker state on <code>keyup</code>, <code>cut</code>, <code>paste</code> and <code>input</code> event in the source element.</p>
+    <p><input type="text" placeholder="#387a40"></p>
+    <script src="color-picker.min.js"></script>
+    <script>
+
+    var picker = new CP(document.querySelector('input'));
+
+    picker.on("change", function(color) {
+        this.source.value = '#' + color;
+    });
+
+    function update() {
+        picker.set(this.value).enter();
+    }
+
+    picker.source.oncut = update;
+    picker.source.onpaste = update;
+    picker.source.onkeyup = update;
+    picker.source.oninput = update;
+
+    </script>
+  </body>
+</html>
