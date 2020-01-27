@@ -3,8 +3,12 @@ function UITextField()
 
     self.options.multiline = false
     self.options.template = [[
-        <input id="<%- id %>" class="ui-framework-parent textfield" spellcheck="false" value="<%- value %>" placeholder="<%- placeholder %>" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
+        <input <% if (typeof hideinput != 'undefined' && hideinput == true) { %>type="password"<% } %> id="<%- id %>" class="ui-framework-parent textfield" spellcheck="false" value="<%- value %>" placeholder="<%- placeholder %>" style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
     ]]
+
+    function self.setHideInput(value)
+        self.options.hideinput = value
+    end
 
     function self.setPlaceholder(placeholder)
         self.options.placeholder = placeholder
