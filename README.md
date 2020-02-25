@@ -4,6 +4,7 @@
 
 * [English](#english)
 * [Russian](#russian) (Thanks to [LocCode](https://github.com/LocCode))
+* [French](#french) (Thanks to [Voltaism](https://github.com/vugi99))
 
 # English
 
@@ -59,5 +60,33 @@ _Вот и всё! Всё очень просто!_
 Вместе, мы можем достичь большего! И мы хотим больше дополнений для Onset. 😉
 
 ## Пример
+![image](/screenshots/screenshot_01.png)
+
+# French
+
+## UIFramework
+Un puissant framework pour le jeu Onset (https://playonset.com/).
+
+`Le framework est en dévelopement, donc les fonctions peuvent être remplacées par des nouvelles a tout moment. Vous devriez prendre en compte cela en mettant a jour le framework.`
+
+#### Pourquoi je devrais pas utiliser l'interface utilisateur de base d'Onset?
+Bien sûr vous pouvez aussi utiliser le WebUI de base directement et avoir plus de possibilités.
+Mais des fois avec un bon framework pour l'interface utilisateur vous pourrez avoir d'impressionnants résultats beaucoup plus rapidement et facilement, donc vous avez plus de temps pour développer la logique principale de votre extension.
+Un autre point est que vous n'avez pas besoin de connaitre l'HTML ou le CSS pour utiliser le framework, mais si vous connaissez l'HTML et le CSS, le framework peut être facilement modifié pour y intégrer de nouvelles fonctionnalités.
+
+#### Toute aide est la bienvenue!
+1. téléchargez/faites un fork du framework
+2. modifiez
+3. envoyez un pull request avec vos changements
+4. si les changements sont bons, Je les accepteraient
+
+_Et c'est tout! Trop facile!_
+
+#### Pourquoi je devrais aider?
+j'ai commencé ce projet pour aider les personnes a développer des extensions pour Onset.
+Il y a beaucoup de personnes qui ont de bonnes idées pour Onset, mais qui ont besoin d'aide pour l'interface.
+Ensemble nous pouvons faire plus! Et nous voulons tous de bonnes extensions pour Onset. 😉
+
+## Example
 ![image](/screenshots/screenshot_01.png)
 
