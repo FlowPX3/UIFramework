@@ -2,8 +2,9 @@ function UIOptionList()
     local self = UIElement()
 
     self.options.multiselection = false
+    self.options.size = 5
     self.options.template = [[
-        <select id="<%- id %>" class="ui-framework-parent ui-option-list" size="5" <% if (multiselection) { %> multiple="multiple" <% } %> style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
+        <select id="<%- id %>" class="ui-framework-parent ui-option-list" size=<%- size %> <% if (multiselection) { %> multiple="multiple" <% } %> style="<% if (typeof css != 'undefined') { %><%- css %><% } %>">
             <% list.forEach(function(item){ %>
                 <option value="<%- item.value %>"><%- item.title %></option>
             <% }); %>
@@ -14,6 +15,10 @@ function UIOptionList()
 
     function self.allowMultiselection(value)
         self.options.multiselection = value
+    end
+
+    function self.size(value)
+        self.options.size = value
     end
 
     function self.appendOption(value, title)
