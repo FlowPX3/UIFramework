@@ -16,7 +16,7 @@
     "uiframework/client/UIAccordion.lua",
     "uiframework/client/UIText.lua",
     "uiframework/client/UIProgressBar.lua",
-    "uiframework/client/Tabs.lua",
+    "uiframework/client/UITabs.lua",
     "uiframework/client/UIRadioButton.lua",
     "uiframework/client/UICheckBox.lua",
     "uiframework/client/UIImage.lua",
