@@ -1,3 +1,28 @@
+local AllUIFrameworkElements = {}
+
+function AddUIFrameworkElement(e)
+    table.insert(AllUIFrameworkElements, e)
+end
+
+function RemoveUIFrameworkElement(e)
+    for i, v in ipairs(AllUIFrameworkElements) do
+        if v.options.id == e.options.id then
+            --AddPlayerChat("REMOVED ELEMENT")
+            table.remove(AllUIFrameworkElements, i)
+            break
+        end
+    end
+end
+
+function GetAllFrameworkElements()
+    local tbl = {}
+    for i, v in ipairs(AllUIFrameworkElements) do
+        table.insert(tbl, v)
+    end
+    return tbl
+end
+
+
 local function UIFrameworkBase()
     local self = {
         id = "screen"
@@ -60,5 +85,12 @@ local function UIFrameworkBase()
 
     return self
 end
+
+function split_uif(str,sep)
+    local sep, fields = sep or ":", {}
+    local pattern = string.format("([^%s]+)", sep)
+    str:gsub(pattern, function(c) fields[#fields+1] = c end)
+    return fields
+ end
 
 UIFramework = UIFrameworkBase()

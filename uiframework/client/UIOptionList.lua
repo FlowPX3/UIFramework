@@ -38,13 +38,6 @@ function UIOptionList()
 
         if index ~= nil then
             table.remove(self.options.list, index)
-            if self.options.list[index] then
-                for i, val in ipairs (self.options.list) do
-                    if i >= index then
-                        self.options.list[i].value = self.options.list[i].value - 1
-                    end
-                end
-            end
         end
 
         --Update the the frontend

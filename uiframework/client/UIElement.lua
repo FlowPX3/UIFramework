@@ -148,7 +148,31 @@ function UIElement()
         return self.options.visible
     end
 
+    function self.getParentId()
+        if self.options.parent then
+            if type(self.options.parent) == "string" then
+                --AddPlayerChat("SPLIT UIF " .. split_uif(self.options.parent, "-")[1])
+                return tonumber(split_uif(self.options.parent, "-")[1])
+            else
+                --AddPlayerChat("self.getParentId() " .. tostring(self.options.parent))
+                return self.options.parent
+            end
+        end
+    end
+
     function self.destroy()
+        local parent_id = self.getParentId()
+        if parent_id then
+            for i, v in ipairs(GetAllFrameworkElements()) do
+                if v.options.id == parent_id then
+                    v.removeChild(self)
+                end
+            end
+        end
+        for i, v in pairs(self.children) do
+            RemoveUIFrameworkElement(v)
+        end
+        RemoveUIFrameworkElement(self)
         UIFramework.execute("destroyObject("..self.options.id..")")
         self = nil
     end
@@ -177,5 +201,17 @@ function UIElement()
         return self
     end
 
+    function self.removeChild(child)
+        for key,value in pairs(self.children) do
+            if value.options.id == child.options.id then
+                table.remove(self.children, key)
+                break
+            end
+        end
+        self.update()
+        return self
+    end
+
+    AddUIFrameworkElement(self)
     return self
 end

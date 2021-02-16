@@ -71,6 +71,26 @@ function UIDialog()
         return self
     end
 
+    function self.removeChild(child)
+        for key,value in pairs(self.children) do
+            if value.options.id == child.options.id then
+                table.remove(self.children, key)
+                break
+            end
+        end
+
+        local cnt = -1
+        for key,value in pairs(self.children) do
+            value.options.parent = self.options.id .. "-".. cnt
+            cnt = cnt + 1
+        end
+
+        counter = counter - 1
+        table.remove(self.options.row, #self.options.row)
+        self.update()
+        return self
+    end
+
     function self.setToScreenCenter()
         UIFramework.execute("setToScreenCenter('"..self.options.id.."');")
     end
